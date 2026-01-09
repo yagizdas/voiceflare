@@ -1,4 +1,4 @@
-# Discord Voice Bot with AI Response Generation
+# VoiceFlare: Discord Voice Bot with xAI Responses
 
 A modular Discord bot that listens to voice channels, transcribes speech using Whisper, detects configurable keywords, and responds with AI-generated audio using XAI (Grok) and Text-to-Speech.
 
