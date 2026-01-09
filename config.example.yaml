@@ -1,0 +1,123 @@
+# Discord Bot Configuration Template
+# Copy this file to config.yaml and fill in your values
+
+# Discord Bot Token (from Discord Developer Portal)
+discord:
+  token: "YOUR_DISCORD_TOKEN_HERE"
+  command_prefix: "!"
+
+# XAI API Configuration (for AI response generation)
+xai:
+  api_key: "YOUR_XAI_API_KEY_HERE"
+  model: "grok-4-1-fast-reasoning"
+  timeout: 3600
+  temperature: 0.1
+  max_tokens: 128
+
+# System Prompts for AI Response Generation
+prompts:
+  # Main aggressive response prompt
+  primary:
+    system: "You are a creative response generator. Your task is to generate creative, humorous responses. Keep responses short, limited to one sentence. Use {target_name} placeholder for the target name. Do not use emojis in your messages."
+    user_template: "This person: {speaker_name}, said something provocative to: {target_name}. Generate an appropriate response."
+  
+  # Alternative friendly/calm response prompt
+  alternative:
+    system: "You are a kind and respectful peacekeeper. Your task is to calm situations with polite, soothing language. Keep responses short, limited to one sentence. Do not use emojis in your messages."
+    user_template: "This person: {speaker_name}, said something provocative to: {target_name}. Generate a calming response to defuse the situation."
+  
+  # Probability of using alternative prompt (0-100)
+  alternative_probability: 30
+
+# Trigger keywords/phrases that activate the bot response
+# Bot will respond when it detects these phrases in user speech
+keyphrases:
+  - "keyword1"
+  - "keyword2"
+  - "keyword3"
+
+# User Configuration
+# Map Discord user IDs to their names and target names
+# Format:
+#   discord_user_id:
+#     name: "Speaker Display Name"
+#     target_name: "Target Name"
+#     friendly_fire_group: "group1"  # Optional: prevent triggering on certain keywords
+users:
+  123456789012345678:  # Replace with actual Discord user ID
+    name: "User1"
+    target_name: "Target1"
+    friendly_fire_group: "group1"
+  
+  234567890123456789:
+    name: "User2"
+    target_name: "Target2"
+    friendly_fire_group: "group2"
+
+# Friendly Fire Groups - prevents users from triggering on certain keywords
+# Maps group names to lists of keywords that won't trigger for that group
+friendly_fire_groups:
+  group1:
+    - "keyword1"
+    - "keyword2"
+  group2:
+    - "keyword3"
+
+# Keyword to Victim Mapping (for announcements)
+# Maps keywords to default victim names if user not found
+keyword_victims:
+  keyword1: "Someone"
+  keyword2: "Friend"
+  keyword3: "Person"
+
+# Speech-to-Text Configuration (Whisper)
+stt:
+  model_size: "small"  # tiny, base, small, medium, large
+  device: "cpu"  # cpu or cuda
+  compute_type: "int8"  # int8, int16, float16, float32
+  language: "en"  # Language code (en, tr, es, etc.)
+  beam_size: 5
+  vad_filter: true
+  vad_min_silence_duration_ms: 500
+  repetition_penalty: 1.1
+  initial_prompt: "Transcribe the following audio accurately with proper punctuation."
+
+# Text-to-Speech Configuration
+tts:
+  engine: "piper"  # "piper" or "windows_sapi"
+  
+  # Piper TTS settings (if engine is "piper")
+  piper:
+    executable_path: "piper/piper.exe"
+    model_path: "piper/models/en_US-lessac-medium.onnx"
+  
+  # Windows SAPI settings (if engine is "windows_sapi")
+  # No additional config needed - uses system default voice
+
+# Audio Processing Configuration
+audio:
+  min_clip_seconds: 1.5  # Minimum duration to process
+  silence_finalize_ms: 600  # Silence duration before finalizing clip
+  preroll_max_chunks: 25  # Number of audio chunks to keep in preroll buffer
+  sample_rate: 48000  # Input sample rate from Discord
+  target_sample_rate: 16000  # Target sample rate for STT
+
+# FFmpeg Configuration
+ffmpeg:
+  path: "ffmpeg/bin"  # Path to FFmpeg binaries (will be added to PATH)
+
+# Audio Files
+audio_files:
+  startup: "startup.wav"  # Played when bot joins voice channel
+  shutdown: "engine_stop.wav"  # Played when bot leaves voice channel
+
+# Debug Settings
+debug:
+  dump_wav_files: false  # Save processed audio clips for debugging
+  dump_directory: "debug_wavs"  # Directory for debug audio files
+  log_level: "INFO"  # DEBUG, INFO, WARNING, ERROR
+
+# Connection Stability Settings
+connection:
+  max_restart_attempts: 10  # Maximum automatic restart attempts
+  restart_cooldown_seconds: 30  # Cooldown period for restart throttling

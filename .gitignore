@@ -1,0 +1,58 @@
+# Configuration files with sensitive data
+config.yaml
+.env
+bot_full.py
+botlauncher.exe
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual Environment
+venv/
+env/
+ENV/
+piper/
+ffmpeg/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Debug files
+debug_wavs/
+*.wav
+startup.wav
+engine_stop.wav
+
+# Temporary TTS output
+tts_*.wav
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
