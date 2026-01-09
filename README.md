@@ -52,6 +52,14 @@ cd discordbot
 pip install -r requirements.txt
 ```
 
+
+### 2. Install Piper and FFMPEG
+
+This project utilizes Piper for speech recognition and FFMPEG for audio processing.
+
+You can download Piper through this [link](https://github.com/rhasspy/piper)
+and FFMPEG from [here](https://www.ffmpeg.org/).
+
 ### 3. Configuration
 
 Copy the example configuration:
