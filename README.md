@@ -2,6 +2,8 @@
 
 A modular Discord bot that listens to voice channels, transcribes speech using Whisper, detects configurable keywords, and responds with AI-generated audio using XAI (Grok) and Text-to-Speech.
 
+DISCLAIMER: This bot is developed solely for fun, and should be kept as a friends-only tool. Do NOT use this tool without the consent of others involved. I do not take responsibility for any illegal use! 
+
 ## Features
 
 - 🎙️ **Real-time Voice Transcription**: Uses Faster Whisper for accurate speech-to-text
